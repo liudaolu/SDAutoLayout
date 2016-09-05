@@ -1282,7 +1282,13 @@
                     CGRect rect = [label.text boundingRectWithSize:CGSizeMake(label.width_sd, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName : label.font} context:nil];
                     label.height_sd = rect.size.height + 0.1;
                 } else {
-                    [label sizeToFit];
+                    if (label.tag == 1) {
+                        float w = label.width;
+                        [label sizeToFit];
+                        label.width = w;
+                    }else{
+                        [label sizeToFit];
+                    }
                 }
             } else {
                 label.height_sd = 0;
